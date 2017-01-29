@@ -39,24 +39,10 @@ object BathroomSecurity {
 		if (goodPositions.contains(nextRawPos)) nextRawPos else lastMove
 	}
 
-	def posToDigit2(pos: Pos): Char = {
-		pos match {
-			case Pos(2,0) => '1'
-			case Pos(1,1) => '2'
-			case Pos(2,1) => '3'
-			case Pos(3,4) => '4'
-			case Pos(0,2) => '5'
-			case Pos(1,2) => '6'
-			case Pos(2,2) => '7'
-			case Pos(3,2) => '8'
-			case Pos(4,2) => '9'
-			case Pos(1,3) => 'A'
-			case Pos(2,3) => 'B'
-			case Pos(3,3) => 'C'
-			case Pos(2,4) => 'D'
-			case _ => 'Z'
-		}
-	}
+	val posMap = Map(Pos(2,0) -> '1', Pos(1,1) -> '2', Pos(2,1) -> '3', Pos(3,4) -> '4', Pos(0,2) -> '5', Pos(1,2) -> '6', Pos(2,2) -> '7', Pos(3,2) -> '8',
+		Pos(4,2) -> '9', Pos(1,3) -> 'A', Pos(2,3) -> 'B', Pos(3,3) -> 'C', Pos(2,4) -> 'D')
+
+	def posToDigit2(pos: Pos): Char = posMap(pos)
 
 	def task2 = {
 		getInputLines.map(processLine(Pos(0,2), posToDigit2, getNextMove2))
