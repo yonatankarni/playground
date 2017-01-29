@@ -1,6 +1,12 @@
 package adventofcode.day2
 
-object BathroomSecurity {
+object BathroomSecurity extends App {
+	val posMap = initPosMap
+	println("task 1 result:")
+	println(task1)
+	println("task 2 result:")
+	println(task2)
+	
 	def getInputLines = scala.io.Source.fromFile("input.txt").getLines
 
 	case class Pos(x: Int, y: Int)
@@ -39,7 +45,7 @@ object BathroomSecurity {
 		if (goodPositions.contains(nextRawPos)) nextRawPos else lastMove
 	}
 
-	val posMap = Map(Pos(2,0) -> '1', Pos(1,1) -> '2', Pos(2,1) -> '3', Pos(3,4) -> '4', Pos(0,2) -> '5', Pos(1,2) -> '6', Pos(2,2) -> '7', Pos(3,2) -> '8',
+	def initPosMap = Map(Pos(2,0) -> '1', Pos(1,1) -> '2', Pos(2,1) -> '3', Pos(3,4) -> '4', Pos(0,2) -> '5', Pos(1,2) -> '6', Pos(2,2) -> '7', Pos(3,2) -> '8',
 		Pos(4,2) -> '9', Pos(1,3) -> 'A', Pos(2,3) -> 'B', Pos(3,3) -> 'C', Pos(2,4) -> 'D')
 
 	def posToDigit2(pos: Pos): Char = posMap(pos)
@@ -47,12 +53,5 @@ object BathroomSecurity {
 	def task2 = {
 		getInputLines.map(processLine(Pos(0,2), posToDigit2, getNextMove2))
 			.mkString
-	}
-
-	def main(args: Array[String]): Unit = {
-		println("task 1 result:")
-		println(task1)
-		println("task 2 result:")
-		println(task2)
 	}
 }
