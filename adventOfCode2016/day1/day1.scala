@@ -1,7 +1,12 @@
 package adventofcode.day1
 import scala.util.matching.Regex
 
-object TaxiCab {
+object TaxiCab extends App {
+	println("task1 result:")
+	println(task1)
+	println("task2 result:")
+	println(task2)
+
 	case class Step(size: Int, rotation: Seq[Int])
 	case class Vec(x: Int, y: Int, factor: Int)
 
@@ -55,12 +60,5 @@ object TaxiCab {
 			.filter(_.seen)
 			.head
 			.v
-	}
-
-	def main(args: Array[String]): Unit = {
-		println("task1 result:")
-		println(task1)
-		println("task2 result:")
-		println(task2)
 	}
 }
