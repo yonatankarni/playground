@@ -1,19 +1,18 @@
 package adventofcode.day3
 
 object SquaresWithThreeSides extends App {
+	val lines = scala.io.Source.fromFile("input.txt").getLines
 	println(
-		scala.io.Source.fromFile("input.txt").getLines
-			.map(line => line.split(' ')
-				.map(_.trim)
+		lines
+			.map(line => line.split("""\s+""")
 				.filter(!_.isEmpty)
 				.map(_.toInt))
 			.map(a => (a(0),a(1),a(2)))
-			.filter(t => (t._1 + t._2 > t._3) && (t._1 + t._3 > t._2) && (t._2 + t._3 > t._1))
-			.size
+			.count(t => (t._1 + t._2 > t._3) && (t._1 + t._3 > t._2) && (t._2 + t._3 > t._1))
 	)
 
-	val arr = scala.io.Source.fromFile("input.txt").getLines
-		.map(line => line.split(' ')
+	val arr = lines
+			.map(line => line.split("""\s+""")
 			.map(_.trim)
 			.filter(!_.isEmpty)
 			.map(_.toInt))
@@ -25,7 +24,6 @@ object SquaresWithThreeSides extends App {
 		} yield Seq(arr(a)(b), arr(a+1)(b), arr(a+2)(b))
 
 	val res = triplets.map(a => (a(0),a(1),a(2)))
-		.filter(t => (t._1 + t._2 > t._3) && (t._1 + t._3 > t._2) && (t._2 + t._3 > t._1))
-		.size
+		.count(t => (t._1 + t._2 > t._3) && (t._1 + t._3 > t._2) && (t._2 + t._3 > t._1))
 	println(res)
 }
