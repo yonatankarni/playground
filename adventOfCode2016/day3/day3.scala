@@ -7,8 +7,7 @@ object SquaresWithThreeSides extends App {
 			.map(line => line.split("""\s+""")
 				.filter(!_.isEmpty)
 				.map(_.toInt))
-			.map(a => (a(0),a(1),a(2)))
-			.count(t => (t._1 + t._2 > t._3) && (t._1 + t._3 > t._2) && (t._2 + t._3 > t._1))
+			.count(a => (a(0) + a(1) > a(2)) && (a(0) + a(2) > a(1)) && (a(1) + a(2) > a(0)))
 	)
 
 	val arr = lines
@@ -23,7 +22,6 @@ object SquaresWithThreeSides extends App {
 		b <- 0 to 2
 		} yield Seq(arr(a)(b), arr(a+1)(b), arr(a+2)(b))
 
-	val res = triplets.map(a => (a(0),a(1),a(2)))
-		.count(t => (t._1 + t._2 > t._3) && (t._1 + t._3 > t._2) && (t._2 + t._3 > t._1))
+	val res = triplets.count(a => (a(0) + a(1) > a(2)) && (a(0) + a(2) > a(1)) && (a(1) + a(2) > a(0)))
 	println(res)
 }
