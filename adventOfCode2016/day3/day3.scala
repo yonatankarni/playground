@@ -1,7 +1,7 @@
 package adventofcode.day3
 
 object SquaresWithThreeSides extends App {
-	val lines = scala.io.Source.fromFile("input.txt").getLines
+	val lines = scala.io.Source.fromFile("input.txt").getLines.toList
 	println(
 		lines
 			.map(line => line.split("""\s+""")
